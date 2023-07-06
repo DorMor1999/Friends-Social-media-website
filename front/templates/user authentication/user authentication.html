@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <title>Friends - user authentication</title>
+
+  <link rel="stylesheet" href="../static/css/user authentication/user authentication styles.css">
+  {% include "common/header.html" %}
+    <div class="container-fluid wraper">
+      <div class="row justify-content-center">
+
+        <div class="col-lg-5 col-md-10 bg-light rounded-4">
+          <main class="form-signin w-100 m-auto">
+            <form class="box"  action="{{url_for('user_authentication')}}" method="post">
+              <h1>Friends</h1>
+              <h3 class="h3 mb-3 fw-normal">User authentication</h3>
+
+              <div class="form-floating">
+                <input type="number" class="form-control verification_code" name="verification_code" min="100000" max="999999" required>
+                <label for="floatingInput">Verification code</label>
+              </div>
+              <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+              {% if msg != "": %}
+                <div class="alert alert-danger" role="alert">
+                    <span>{{msg}}</span>
+                </div>
+              {% endif %}
+            </form>
+          </main>
+        </div>
+
+      </div>
+    </div>
+
+  {% include "common/footer.html" %}
+
+</body>
+</html>

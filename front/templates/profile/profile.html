@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <title>Friends - Profile {{profile_user.first_name}} {{profile_user.last_name}}</title>
+    {% include "common/header.html" %}
+    <link rel="stylesheet" href="../static/css/profile/profile styles.css">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+
+                <div class="col-lg-10 col-md-12 bg-light rounded-5 profile-box">
+                    <div class="row justify-content-center">
+                        <div class="col-6">
+                            <div class="img-and-name">
+                                <a class="link-profile" href="{{url_for('profile', first_name=profile_user.first_name, last_name=profile_user.last_name, id=profile_user.id)}}">
+                                    <img class="profile-img" src="{{profile_user.profile_picture_path.replace('front/', '../')}}" alt="" srcset="">
+                                    <span class="fs-4">{{profile_user.first_name}} {{profile_user.last_name}}</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            {%if profile_user.friends_list|length > 0 %}
+                                <!-- Button trigger modal friends profile-->
+                                <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#ProfileFriends">Friends {{profile_user.friends_list|length}}</button>
+
+                                <!-- Modal friends profile-->
+                                <div class="modal fade" id="ProfileFriends"
+                                     data-bs-backdrop="static"
+                                     data-bs-keyboard="false" tabindex="-1"
+                                     aria-labelledby="staticBackdropLabelProfileFriends"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5"
+                                                    id="staticBackdropLabelProfileFriends">Friends</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table table-striped table-hover likes-table">
+                                                    <tbody>
+                                                    {% for friend in profile_user.friends_list %}
+                                                    <tr>
+                                                        <td><a class="friend-modal-link"
+                                                               href="{{url_for('profile', first_name=friend.first_name, last_name=friend.last_name, id=friend.id)}}"><img
+                                                                class="friend_model_img"
+                                                                src="{{friend.profile_picture_path.replace('front/', '../')}}"
+                                                                alt="" srcset=""> {{friend.first_name}}
+                                                            {{friend.last_name}}</a></td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <button type="button" class="btn btn-primary disabled float-end">Friends {{profile_user.friends_list|length}}</button>
+                            {% endif %}
+                            <br>
+                            <br>
+                            <a href="{{url_for('gallery', first_name=profile_user.first_name, last_name=profile_user.last_name, id=profile_user.id)}}"><button type="button" class="btn btn-primary float-end">Gallery</button></a>
+                            {% if office.the_user.email != profile_user.email and office.the_user.get_friend(profile_user.email) == None and office.the_user.get_friend_request(profile_user.email) == None %}
+                                <br>
+                                <br>
+                                <form action="{{url_for('profile', first_name=profile_user.first_name, last_name=profile_user.last_name, id=profile_user.id)}}" method="post">
+                                    <button type="submit" name="send_friend_request" value="{{profile_user.email}}" class="btn btn-outline-primary float-end">Add Friend</button>
+                                </form>
+                            {% elif office.the_user.get_friend(profile_user.email) != None %}
+                                <br>
+                                <br>
+                            <button type="button" class="btn btn-primary dropdown-toggle float-end" data-bs-toggle="dropdown" aria-expanded="false">Friends</button>
+                            <ul class="dropdown-menu">
+                                <form action="{{url_for('profile', first_name=profile_user.first_name, last_name=profile_user.last_name, id=profile_user.id)}}" method="post">
+                                    <li><button value="{{profile_user.email}}" name="delete_friend" class="dropdown-item text-danger">Delete friend</button></li>
+                                </form>
+                            </ul>
+                            {% elif office.the_user.get_friend_request(profile_user.email) != None %}
+                                <br>
+                                <br>
+                                <form action="{{url_for('profile', first_name=profile_user.first_name, last_name=profile_user.last_name, id=profile_user.id)}}" method="post">
+                                    <button type="submit" name="cancel_friend_request" value="{{profile_user.email}}" class="btn btn-outline-danger float-end">Cancel friend request</button>
+                                </form>
+                                {% if office.the_user.email == office.the_user.get_friend_request(profile_user.email).user_2_get.email%}
+                                <br>
+                                <br>
+                                <form action="{{url_for('profile', first_name=profile_user.first_name, last_name=profile_user.last_name, id=profile_user.id)}}"
+                                      method="post">
+                                    <button type="submit" name="accept_friend_request"
+                                            value="{{profile_user.email}}"
+                                            class="btn btn-outline-success float-end accept-friend-req-btn">
+                                        Accept friend request
+                                    </button>
+                                </form>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--            all posts-->
+                {% include "common/all posts.html" %}
+
+
+
+            </div>
+        </div>
+
+    {% include "common/footer.html" %}
+    <script src="../../static/js/profile/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+.navbar{
+    margin-bottom: 4%;
+}
+
+.box{
+    padding: 4% 4%;
+}
+
+.form-floating{
+    margin-bottom:15px;
+}
+
+.wraper{
+    margin-bottom: 4%;
+}
+
+.left {
+    width: 45%;
+}
+
+.right {
+    width: 45%;
+}
+
+.remove{
+    margin-top: 7.5%;
+}
+
+.optional{
+    color: grey;
+}
+
+.required{
+    color: red;
+}
+
+#image{
+    width: 105px;
+    height: 105px;
+}
+
+
+
+

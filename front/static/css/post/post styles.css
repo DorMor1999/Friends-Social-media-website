@@ -1,0 +1,106 @@
+.writer-post-img{
+    width: 60px;
+    height: 60px;
+}
+
+.details-box{
+    text-align: right;
+}
+
+.tags-link-post{
+    text-decoration: none;
+}
+
+.tags-link-comment{
+    text-decoration: none;
+}
+
+.pictures-post{
+    max-height: 375px;
+}
+
+.text-box {
+  overflow: auto;
+  max-height: 200px;
+
+}
+
+.like-box{
+    text-align: right;
+}
+
+.the-comments-box{
+    overflow: auto;
+    max-height: 200px;
+
+}
+
+.the-post{
+    margin-top: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.link-post-writer{
+        text-decoration: none;
+}
+
+.like-comment-newcomment{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.friend_tag_model_img_comment{
+    height: 50px;
+    width: 50px;
+}
+
+.friend-tag-new-comment-link{
+    text-decoration: none;
+}
+
+.commentSubmit{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.new-comment-box{
+    text-align: center;
+}
+
+.link-profile-comment{
+    text-decoration: none;
+}
+
+.profile-img-comment{
+    width: 50px;
+    height: 50px;
+}
+
+.td-like-comment-btn{
+    width: 110px;
+    text-align: center;
+
+}
+
+.like_model_img{
+    height: 50px;
+    width: 50px;
+}
+
+.like-modal-link{
+    text-decoration: none;
+}
+
+.likes-table{
+    text-align: left;
+}
+
+.like-comment-btn{
+    margin-top: 5%;
+}
+.delete-comment{
+    margin-top: 5%;
+}
+
+

@@ -1,0 +1,73 @@
+.the-user-profile-picture{
+    width: 40px;
+    height: 40 px;
+}
+@media screen and (min-width: 992px){
+    .li-nav{
+        padding-top: 2.9%;
+    }
+}
+
+.specific-notification-img{
+    width: 50px;
+    height: 50px;
+}
+
+.specific-notification-btn{
+    visibility: hidden;
+    max-height: 0;
+    max-width 0;
+}
+
+.notifications-div{
+    max-height: 400px;
+    min-width: 400px;
+    overflow: auto;
+}
+
+.specific-request-img{
+    width: 50px;
+    height: 50px;
+}
+
+.add_and_decline_friend_request{
+    padding: 0;
+}
+
+.zero_friend_requests_p{
+    text-align:center;
+    color: red;
+}
+
+.friend-requests-div{
+    max-height: 400px;
+    min-width: 400px;
+    overflow: auto;
+}
+
+.accept_friend_request_btn{
+    margin-left: 2%;
+}
+
+.friend-chat-img{
+    width: 50px;
+    height: 50px;
+}
+
+
+.navbar{
+    margin-bottom: 4%;
+}
+
+.required{
+    color: red;
+}
+
+.form-floating{
+    margin-bottom: 10px;
+}
+
+#image{
+    width: 105px;
+    height: 105px;
+}

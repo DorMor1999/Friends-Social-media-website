@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <title>Friends - notifications</title>
+    {% include "common/header.html" %}
+    <link rel="stylesheet" href="../static/css/notifications/notifications styles.css">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-12 allNotifications">
+                    <table class="table table-striped table-hover">
+                        {%for notification in office.the_user.notifications["notifications_list"][::-1] %}
+                        <form action="{{url_for('post', post_id=notification.post_id)}}" method="post">
+
+                            <tr onclick="document.querySelector('.specific-notification-btn').click()">
+                                <td>
+                                    <img class="specific-notification-img"
+                                         src="{{notification.user_1_writer.profile_picture_path.replace('front/', '../')}}"
+                                         alt="" srcset="">
+                                    <button value="{{notification.id}}" name="specific_notification"
+                                            class="specific-notification-btn" type="submit"></button>
+                                </td>
+                                <td>{{notification.notification}}</td>
+                                <td>{{notification.date["date"]}}<br>{{notification.date["time"]}}</td>
+                            </tr>
+                        </form>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    {% include "common/footer.html" %}
+
+</body>
+</html>

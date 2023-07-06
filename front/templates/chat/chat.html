@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <title>Friends - chat {{chat.id}}</title>
+    {% include "common/header.html" %}
+    <link rel="stylesheet" href="../static/css/chat/chat styles.css">
+
+
+        <div class="container-fluid">
+            <div class="row justify-content-center div-general">
+                <div class="col-lg-10 col-md-12">
+
+                        {% for message in chat.messages["messages_list"] %}
+                                <div class="row justify-content-center">
+                                    <div class="col-12">
+                                {% if message.writer_user.email == office.the_user.email %}
+                                    <div class="card d-inline-block me bg-primary text-white">
+                                        <div class="card-body">
+                                            <a class="link-writer" href="{{url_for('profile', first_name=message.writer_user.first_name, last_name=message.writer_user.last_name, id=message.writer_user.id)}}"><p><img src="{{message.writer_user.profile_picture_path.replace('front/', '../')}}" alt="" srcset="" width="30" height="30"> {{message.writer_user.first_name}} {{message.writer_user.last_name}}</p></a>
+                                            <p class="card-text">{{message.text}}</p>
+                                            <p>{{message.date["date"]}} {{message.date["time"]}} <form action="{{url_for('chat', chat_id=chat.id)}}" method="post"><button value="{{message.id}}" type="submit" name="delete_message" class="btn btn-danger">Delete</button></form></p>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="card text-end d-inline-block float-end other bg-secondary text-white">
+                                        <div class="card-body">
+                                            <a class="link-writer" href="{{url_for('profile', first_name=message.writer_user.first_name, last_name=message.writer_user.last_name, id=message.writer_user.id)}}"><p>{{message.writer_user.first_name}} {{message.writer_user.last_name}} <img src="{{message.writer_user.profile_picture_path.replace('front/', '../')}}" alt="" srcset="" width="30" height="30"></p></a>
+                                            <p class="card-text">{{message.text}}</p>
+                                            <p>{{message.date["time"]}} {{message.date["date"]}} </p>
+                                        </div>
+                                    </div>
+
+                                {% endif %}
+                                    </div>
+                                </div>
+                                <br>
+                        {% endfor %}
+                        <div class="input-div fixed-bottom bg-light rounded-4">
+                            <form action="{{url_for('chat', chat_id=chat.id)}}" method="post">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">New message</label>
+                                    <textarea pattern=".{1,}"  class="form-control" id="exampleFormControlTextarea1" rows="1" name="new_message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary">Send</button>
+                            </form>
+                        </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    {% include "common/footer.html" %}
+    <script src="../../static/js/chat/chat.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+.post-images-display{
+  width: 100px;
+  height: 100px;
+}
+
+.remove-picture{
+    width: 100px;
+    height: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.remove-all{
+    margin-bottom: 2%;
+}
+
+#file-input{
+    margin-bottom: 2%;
+}
+
+
+.new-post{
+    margin-top: 2%;
+}
+
+.div-input-new-post{
+    margin-bottom: 2%;
+}
+
+.friend_tag_model_img{
+    height: 50px;
+    width: 50px;
+}
+
+.friend-tag-new-post-link{
+    text-decoration: none;
+}
+
+.alert_mistake_new_post{
+    margin-top: 1%;
+}
+
+
+

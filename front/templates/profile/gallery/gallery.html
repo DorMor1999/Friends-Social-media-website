@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <title>Friends - Gallery {{profile_user.first_name}} {{profile_user.last_name}}</title>
+    {% include "common/header.html" %}
+    <link rel="stylesheet" href="../../static/css/profile/gallery/gallery styles.css">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+
+
+                <div class="col-lg-10 col-md-12">
+                    <div class="row justify-content-center">
+
+
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                        User pictures
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                                            {% for the_post in posts[::-1] %}
+
+                                                {% if the_post.writer_user.email == profile_user.email and the_post.pictures_paths[0] != "" %}
+
+                                                    {% for path in the_post.pictures_paths %}
+                                                    <div class="col">
+                                                        <div class="card shadow-sm">
+                                                            <a href="{{url_for('post', post_id=the_post.id)}}"><img class="bd-placeholder-img card-img-top" width="100%" height="300" src="{{path.replace('front/', '../../')}}" alt="" srcset=""></a>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+
+                                                {% endif %}
+
+                                            {% endfor %}
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        Tags pictures
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+                                            {% for the_post in posts[::-1] %}
+
+                                                {% if the_post.writer_user.email != profile_user.email and the_post.pictures_paths[0] != "" %}
+
+                                                    {% for path in the_post.pictures_paths %}
+                                                    <div class="col">
+                                                        <div class="card shadow-sm">
+                                                            <a href="{{url_for('post', post_id=the_post.id)}}"><img class="bd-placeholder-img card-img-top" width="100%" height="300" src="{{path.replace('front/', '../../')}}" alt="" srcset=""></a>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+
+                                                {% endif %}
+
+                                            {% endfor %}
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    {% include "common/footer.html" %}
+    <script src="../../static/js/profile/gallery/gallery.js"></script>
+</body>
+</html>

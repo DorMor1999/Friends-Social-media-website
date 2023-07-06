@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <title>Friends - Private {{office.the_user.first_name}} {{office.the_user.last_name}}</title>
+    {% include "common/header.html" %}
+    <link rel="stylesheet" href="../../static/css/profile/private/private styles.css">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+
+
+                <div class="col-lg-10 col-md-12">
+                    <div class="row justify-content-center">
+
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item ">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#first-name" aria-expanded="false"
+                                            aria-controls="first-name">
+                                        First name : {{office.the_user.first_name}}
+                                    </button>
+                                </h2>
+                                <div id="first-name" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <form action="{{url_for('private', first_name=office.the_user.first_name, last_name=office.the_user.last_name, id=office.the_user.id)}}" method="post" onsubmit="return validateFirstNameForm()" enctype="multipart/form-data">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control first_name"  placeholder="First name" name="first_name">
+                                                <label>Change first name <span class="required">*</span></label>
+                                            </div>
+                                            <button value='submit request' type="submit" class="btn btn-dark">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#last-name" aria-expanded="false"
+                                            aria-controls="last-name">
+                                        Last name : {{office.the_user.last_name}}
+                                    </button>
+                                </h2>
+                                <div id="last-name" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <form action="{{url_for('private', first_name=office.the_user.first_name, last_name=office.the_user.last_name, id=office.the_user.id)}}" method="post" onsubmit="return validateLastNameForm()" enctype="multipart/form-data">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control last_name" placeholder="Last name" name="last_name">
+                                                <label>Change last name <span class="required">*</span></label>
+                                            </div>
+                                            <button value='submit request' type="submit" class="btn btn-dark">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#email" aria-expanded="false"
+                                            aria-controls="email">
+                                        Email : {{office.the_user.email}}
+                                    </button>
+                                </h2>
+                                <div id="email" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <form action="{{url_for('private', first_name=office.the_user.first_name, last_name=office.the_user.last_name, id=office.the_user.id)}}" method="post" onsubmit="return validateEmailForm()" enctype="multipart/form-data">
+                                            <div class="form-floating">
+                                                <input type="email" class="form-control email"  placeholder="name@example.com" name="email" pattern=".+@gmail\.com" title="You can register only with gmail!">
+                                                <label>Change email<span class="required">*</span></label>
+                                            </div>
+                                            <button value='submit request' type="submit" class="btn btn-dark">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#password" aria-expanded="false"
+                                            aria-controls="password">
+                                        Password : {{office.the_user.password}}
+                                    </button>
+                                </h2>
+                                <div id="password" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <form action="{{url_for('private', first_name=office.the_user.first_name, last_name=office.the_user.last_name, id=office.the_user.id)}}" method="post" onsubmit="return validatePasswordForm()" enctype="multipart/form-data">
+                                            <div class="form-floating">
+                                                <input type="password" class="form-control password"  placeholder="Password" name="password">
+                                                <label>Change password <span class="required">*</span></label>
+                                            </div>
+                                            <button value='submit request' type="submit" class="btn btn-dark">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#picture" aria-expanded="false"
+                                            aria-controls="picture">
+                                        Profile picture:
+                                    </button>
+                                </h2>
+                                <div id="picture" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <form action="{{url_for('private', first_name=office.the_user.first_name, last_name=office.the_user.last_name, id=office.the_user.id)}}" method="post" onsubmit="return validatePictureForm()" enctype="multipart/form-data">
+                                            <div class="form-floating">
+
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="form-label">Profile picture <span class="required">*</span></label>
+                                                    <input class="form-control" type="file" id="formFile" name="profile_picture" accept="image/png, image/jpeg">
+                                                </div>
+                                                <div class="remove float-end"></div>
+                                                <div class="image"></div>
+
+                                            </div>
+                                            <button value='submit request' type="submit" class="btn btn-dark">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#delete_user" aria-expanded="false"
+                                            aria-controls="delete_user">
+                                        Delete user
+                                    </button>
+                                </h2>
+                                <div id="delete_user" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <form action="{{url_for('private', first_name=office.the_user.first_name, last_name=office.the_user.last_name, id=office.the_user.id)}}" method="post" enctype="multipart/form-data">
+                                            <button value='submit request' type="submit" name="delete_user" class="btn btn-danger">Delete user</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert_mistake">
+                            {% if msg != "" %}
+                            <div class="alert alert-danger" role="alert">{{msg}}</div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    {% include "common/footer.html" %}
+    <script src="../../static/js/profile/private/private.js"></script>
+</body>
+</html>

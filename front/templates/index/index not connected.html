@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <title>Friends</title>
+    <link rel="stylesheet" href="../static/css/index/index not connected styles.css">
+    {% include "common/header.html" %}
+        <div class="bg-light text-dark wraper">
+            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="../static/assets/data/home/social-media.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
+                         height="500" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold lh-1 mb-3">Friends</h1>
+                    <p class="lead">Friends is a social network that connects people from all over the world. Users can share photos, videos and anything else they like.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a href="{{url_for('sign_in')}}"><button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Sign In</button></a>
+                        <a href="{{url_for('register')}}"><button type="button" class="btn btn-outline-secondary btn-lg px-4">Register</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% include "common/footer.html" %}
+</body>
+</html>

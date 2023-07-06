@@ -1,0 +1,23 @@
+.profile-box{
+    margin-top: 4%;
+    padding: 3.5% 3.5% 3.5% 3.5%;
+}
+
+.profile-img{
+    width: 100px;
+    height: 100px;
+}
+
+.link-profile{
+    text-decoration: none;
+}
+
+.friend_model_img{
+    height: 50px;
+    width: 50px;
+}
+
+.friend-modal-link{
+    text-decoration: none;
+}
+

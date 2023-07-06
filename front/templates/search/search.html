@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <title>Friends - Search</title>
+    {% include "common/header.html" %}
+    <link rel="stylesheet" href="../static/css/search/search styles.css">
+
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+
+                <div class="col-lg-10 col-md-12 all-search">
+
+                    <table class="table table-striped table-hover">
+                        {% for user in search_list %}
+                            <tr>
+                                <td class="name-and-pic">
+                                    <a class="link-user-search" href="{{url_for('profile', first_name=user.first_name, last_name=user.last_name, id=user.id)}}">
+                                        <img class="profile-pic-search" src="{{user.profile_picture_path.replace('front/', '../')}}" alt="" srcset="">
+                                        <span class="name-span">{{user.first_name}} {{user.last_name}}</span>
+                                    </a>
+                                </td>
+                                <td>
+
+
+                                    {% if office.the_user.email != user.email and office.the_user.get_friend(user.email) == None and office.the_user.get_friend_request(user.email) == None %}
+                                    <form action="{{url_for('profile', first_name=user.first_name, last_name=user.last_name, id=user.id)}}"
+                                          method="post">
+                                        <button type="submit" name="send_friend_request" value="{{user.email}}"
+                                                class="btn btn-outline-primary float-end">Add Friend
+                                        </button>
+                                    </form>
+                                    {% elif office.the_user.get_friend(user.email) != None %}
+                                    <button type="button" class="btn btn-primary dropdown-toggle float-end"
+                                            data-bs-toggle="dropdown" aria-expanded="false">Friends
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <form action="{{url_for('profile', first_name=user.first_name, last_name=user.last_name, id=user.id)}}"
+                                              method="post">
+                                            <li>
+                                                <button value="{{user.email}}" name="delete_friend"
+                                                        class="dropdown-item text-danger">Delete friend
+                                                </button>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                    {% elif office.the_user.get_friend_request(user.email) != None %}
+                                        <form action="{{url_for('profile', first_name=user.first_name, last_name=user.last_name, id=user.id)}}"
+                                              method="post">
+                                            <button type="submit" name="cancel_friend_request"
+                                                    value="{{user.email}}" class="btn btn-outline-danger float-end">
+                                                Cancel friend request
+                                            </button>
+                                        </form>
+                                        {% if office.the_user.email == office.the_user.get_friend_request(user.email).user_2_get.email%}
+                                        <br>
+                                        <br>
+                                        <form action="{{url_for('profile', first_name=user.first_name, last_name=user.last_name, id=user.id)}}"
+                                              method="post">
+                                            <button type="submit" name="accept_friend_request"
+                                                    value="{{user.email}}" class="btn btn-outline-success float-end accept-friend-req-btn">
+                                                Accept friend request
+                                            </button>
+                                        </form>
+                                        {% endif %}
+                                    {% endif %}
+                                    
+                                    
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+    {% include "common/footer.html" %}
+</body>
+</html>

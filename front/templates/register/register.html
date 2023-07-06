@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <title>Friends - Register</title>
+    <link rel="stylesheet" href="../static/css/register/register styles.css">
+    {% include "common/header.html" %}
+
+    <div class="container-fluid wraper">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 bg-light rounded-4">
+          <main class="form-signin w-100 m-auto">
+            <form class="box" action="{{url_for('register')}}" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+              <div class="explain float-end">
+                <h6>Required: <span class="required">*</span></h6>
+              </div>
+              <h1>Friends</h1>
+              <h3 class="h3 mb-3 fw-normal">Please Register</h3>
+              <div class="right float-end">
+                <div class="form-floating">
+                  <input type="text" class="form-control first_name"  placeholder="First name" name="first_name">
+                  <label>First name <span class="required">*</span></label>
+                </div>
+                <div class="form-floating">
+                  <input type="text" class="form-control last_name"  placeholder="Last name" name="last_name">
+                  <label>Last name <span class="required">*</span></label>
+                </div>
+                <div class="form-floating">
+                  <input type="date" class="form-control birthday"  placeholder="Date of birth" name="birthday">
+                  <label>Date of birth <span class="required">*</span></label>
+                </div>
+                <div class="form-floating">
+                  <h6>Gender <span class="required">*</span></h6>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input male" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Male">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input female" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Female">
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                  </div>
+                </div>
+              </div>
+              <div class="left">
+                <div class="form-floating">
+                  <input type="email" class="form-control email"  placeholder="name@example.com" name="email" pattern=".+@gmail\.com" title="You can register only with gmail!">
+                  <label>Email address <span class="required">*</span></label>
+                </div>
+                <div class="form-floating">
+                  <input type="password" class="form-control password"  placeholder="Password" name="password">
+                  <label>Password <span class="required">*</span></label>
+                </div>
+
+                <div class="form-floating">
+
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Profile picture <span class="optional">(Optional)</span></label>
+                    <input class="form-control" type="file" id="formFile" name="profile_picture" accept="image/png, image/jpeg">
+                  </div>
+                  <div class="remove float-end"></div>
+                  <div class="image"></div>
+
+                </div>
+
+              </div>
+              <button class="w-100 btn btn-lg btn-primary submit" value='submit request' type="submit">Register</button>
+            </form>
+            <div class="alert_mistake">
+              {% if msg != "" %}
+              <div class="alert alert-danger" role="alert">{{msg}}</div>
+              {% endif %}
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    {% include "common/footer.html" %}
+    <script src="../../static/js/register/register.js"></script>
+</body>
+</html>

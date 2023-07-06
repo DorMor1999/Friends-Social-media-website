@@ -1,0 +1,22 @@
+.input-div{
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+    padding: 2.5%;
+}
+
+@media (max-width: 992px) {
+  .input-div{
+    width: 100%;
+  }
+}
+
+.link-writer{
+    color:white;
+    text-decoration:none;
+}
+
+.div-general{
+    margin-bottom: 275px;
+}

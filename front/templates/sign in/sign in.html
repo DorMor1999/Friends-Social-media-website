@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <title>Friends - Sign In</title>
+    <link rel="stylesheet" href="../static/css/sign in/sign in styles.css">
+    {% include "common/header.html" %}
+    <div class="container-fluid wraper">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-10 bg-light rounded-4">
+          <main class="form-signin w-100 m-auto">
+            <form class="box"  action="{{url_for('sign_in')}}" method="post">
+              <h1>Friends</h1>
+              <h3 class="h3 mb-3 fw-normal">Please Sign In</h3>
+
+              <div class="form-floating">
+                <input type="email" class="form-control email"  placeholder="name@example.com" name="email">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control password"  placeholder="Password" name="password">
+                <label for="floatingPassword">Password</label>
+              </div>
+
+              <div class="checkbox mb-3">
+                <label>
+                    <a href="{{url_for('forgot_my_password')}}"><button type="button" class="btn btn-outline-primary">Forgot my password</button></a>
+                </label>
+              </div>
+              <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+              {% if msg != "": %}
+                <div class="alert alert-danger" role="alert">
+                    <span name="error_msg" >{{msg}}</span>
+                </div>
+              {% endif %}
+            </form>
+          </main>
+        </div>
+      </div>
+    </div>
+    {% include "common/footer.html" %}
+</body>
+</html>
