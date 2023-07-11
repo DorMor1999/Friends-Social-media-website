@@ -2,7 +2,7 @@ from datetime import timedelta
 
 from flask import Flask, render_template, request, redirect, url_for
 
-from back.chat import Chat
+
 from back.management import Management
 
 
